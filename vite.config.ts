@@ -47,7 +47,7 @@ export default defineConfig({
       // remotes:{
       //     common: 'http://localhost:3000/assets/remoteEntry.js',
       // },
-      shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia']
+      shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia', '@vueuse/core']
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -71,7 +71,7 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
-      // allow auto load markdown components under `./src/components/`
+      // allow auto load components under `./src/components/`
       extensions: ['vue'],
 
       // allow auto import and register components used in markdown
