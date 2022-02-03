@@ -8,10 +8,12 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 export default defineConfig({
-  base: '/template',
+  base: process.env.BASE_PATH || '/',
   build: {
     target: 'esnext',
     minify: true,

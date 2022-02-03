@@ -1,9 +1,12 @@
+<script setup lang="ts">
+const { t } = useI18n()
+</script>
+
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <router-view />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-      [Title Layout]
+  <main class="m-6">
+    <div class="card elevation-1 text-center">
+      <router-view />
+      <router-link to="/">{{ t('welcome') }}</router-link>
     </div>
-    <router-link to="/welcome">welcome</router-link>
   </main>
 </template>
