@@ -8,19 +8,21 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import dotenv from 'dotenv'
-
-dotenv.config()
+import { AlegraCommonsResolver, SmileAlegraResolver } from '@alegradev/smile-ui-alegra-next'
+import { SmileResolver } from '@alegradev/smile-ui-next'
 
 export default defineConfig({
-  base: process.env.BASE_PATH || '/',
+  // set to microfrontend base path
+  // ex: '/invoice' | '/feco-wizard'
+  base: '/',
   build: {
     target: 'esnext',
     minify: true,
     rollupOptions: {
       input: 'src/main.ts',
       output: {
-        format: 'system'
+        format: 'system',
+        entryFileNames: '[name].js',
       }
     },
   },
@@ -37,8 +39,7 @@ export default defineConfig({
           base: '/src'
         }
       }
-    }),
-
+    }), 
     // https://github.com/originjs/vite-plugin-federation
     federation({
       // name: 'app-alegra-template',
@@ -49,7 +50,7 @@ export default defineConfig({
       // remotes:{
       //     common: 'http://localhost:3000/assets/remoteEntry.js',
       // },
-      shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia', '@vueuse/core']
+      // shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia', '@vueuse/core']
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -69,6 +70,9 @@ export default defineConfig({
         'vitest',
       ],
       dts: 'src/auto-imports.d.ts',
+      resolvers: [
+        AlegraCommonsResolver()
+      ]
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -80,14 +84,11 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/],
 
       // custom resolvers
-      // resolvers: [
-      //   // auto import icons
-      //   // https://github.com/antfu/unplugin-icons
-      //   IconsResolver({
-      //     componentPrefix: '',
-      //     // enabledCollections: ['carbon']
-      //   }),
-      // ],
+      resolvers: [
+        SmileResolver(),
+        SmileAlegraResolver(),
+        // SmileAlegraDirectivesResolver()
+      ],
 
       dts: 'src/components.d.ts',
     }),

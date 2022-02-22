@@ -4,6 +4,8 @@ import App from './App.vue'
 
 import './styles/main.css'
 
+import { installDeps, installDir } from '@alegradev/smile-ui-alegra-next'
+
 const vueLifecycles = singleSpaVue({
   createApp,
   appOptions: {
@@ -19,10 +21,12 @@ const vueLifecycles = singleSpaVue({
       });
     },
   },
-  handleInstance: (app) => {
+  handleInstance: async (app) => {
+    installDeps(app)
+    installDir(app)
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).forEach(m => app.use(m))
-  }
+  },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
