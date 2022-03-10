@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "vite build",
-    "dev": "cross-env NODE_ENV=development vite --port 3101",
+    "dev": "cross-env NODE_ENV=development vite --port 4000",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",

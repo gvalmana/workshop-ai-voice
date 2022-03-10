@@ -4,7 +4,7 @@ import App from './App.vue'
 
 import './styles/main.css'
 
-// import { installDeps, installDir } from '@alegradev/smile-ui-alegra-next'
+// import { installDeps, installDir } from '@alegradev/smile-ui-alegra'
 
 const vueLifecycles = singleSpaVue({
   createApp,

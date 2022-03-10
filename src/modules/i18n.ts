@@ -18,6 +18,10 @@ export const install = (app) => {
     legacy: false,
     locale: 'es',
     messages,
+    // INFO: las applicaciones que no usen el vue-router deben activar esta linea, por defecto vue-i18n
+    // agrega la carga de traducciones al componente de la ruta actual para optimizar la velocidad
+    // de carga de las traducciones
+    // globalInjection: true
   })
 
   app.use(i18n)

@@ -8,8 +8,8 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { AlegraCommonsResolver, SmileAlegraResolver } from '@alegradev/smile-ui-alegra-next'
-import { SmileResolver } from '@alegradev/smile-ui-next'
+// import { SmileAlegraResolver } from '@alegradev/smile-ui-alegra'
+// import { SmileResolver } from '@alegradev/smile-ui'
 
 export default defineConfig({
   // set to microfrontend base path
@@ -50,7 +50,7 @@ export default defineConfig({
       // remotes:{
       //     common: 'http://localhost:3000/assets/remoteEntry.js',
       // },
-      // shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia', '@vueuse/core']
+      shared: ['vue', 'single-spa-vue', 'vue-i18n', 'vue-router', 'pinia']
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -69,10 +69,7 @@ export default defineConfig({
         'vue-i18n',
         'vitest',
       ],
-      dts: 'src/auto-imports.d.ts',
-      resolvers: [
-        AlegraCommonsResolver()
-      ]
+      dts: 'src/auto-imports.d.ts'
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -85,8 +82,8 @@ export default defineConfig({
 
       // custom resolvers
       resolvers: [
-        SmileResolver(),
-        SmileAlegraResolver(),
+        // SmileResolver(),
+        // SmileAlegraResolver(),
         // SmileAlegraDirectivesResolver()
       ],
 

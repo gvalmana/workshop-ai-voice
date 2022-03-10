@@ -17,11 +17,8 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      "@alegradev/smile-ui-next"
-    ],
-    "paths": {
-      "~/*": ["src/*"]
-    }
+      "@alegradev/smile-ui"
+    ]
   },
   "exclude": ["dist", "node_modules"]
 }
