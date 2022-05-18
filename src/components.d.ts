@@ -7,12 +7,12 @@ declare module 'vue' {
     SidebarLinks: typeof import('./components/SidebarLinks.vue')['default']
     SidebarLogo: typeof import('./components/SidebarLogo.vue')['default']
     SidebarOption: typeof import('./components/SidebarOption.vue')['default']
-    SmAccordion: typeof import('@alegradev/smile-ui')['SmAccordion']
-    SmAccordionBody: typeof import('@alegradev/smile-ui')['SmAccordionBody']
-    SmAccordionHeader: typeof import('@alegradev/smile-ui')['SmAccordionHeader']
-    SmAccordionItem: typeof import('@alegradev/smile-ui')['SmAccordionItem']
+    SmAccordion: typeof import('@smile-ui/vue')['SmAccordion']
+    SmAccordionBody: typeof import('@smile-ui/vue')['SmAccordionBody']
+    SmAccordionHeader: typeof import('@smile-ui/vue')['SmAccordionHeader']
+    SmAccordionItem: typeof import('@smile-ui/vue')['SmAccordionItem']
     SmaSidebarToggler: typeof import('@alegradev/smile-ui-alegra')['SmaSidebarToggler']
-    SmIcon: typeof import('@alegradev/smile-ui')['SmIcon']
+    SmIcon: typeof import('@smile-ui/vue')['SmIcon']
   }
 }
 

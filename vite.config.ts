@@ -9,7 +9,7 @@ import Inspect from 'vite-plugin-inspect'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 // import { SmileAlegraResolver } from '@alegradev/smile-ui-alegra'
-// import { SmileResolver } from '@alegradev/smile-ui'
+// import { SmileResolver } from '@smile-ui/vue'
 
 export default defineConfig({
   // set to microfrontend base path

@@ -17,7 +17,7 @@
       "vite/client",
       "vite-plugin-pages/client",
       "vite-plugin-vue-layouts/client",
-      "@alegradev/smile-ui"
+      "@smile-ui/vue"
     ]
   },
   "exclude": ["dist", "node_modules"]

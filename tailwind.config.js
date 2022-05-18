@@ -1,4 +1,4 @@
-const smileConfig = require('@alegradev/smile-ui-css/tailwind.config')
+const smileConfig = require('@smile-ui/styles/tailwind.config')
 
 module.exports = {
   content: [ './src/**/*.{vue,js,ts,jsx,tsx}' ],
