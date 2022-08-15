@@ -1,4 +1,4 @@
-# smile-ui-alegra
+# app-alegra-template
 
 ## Project setup
 ```
