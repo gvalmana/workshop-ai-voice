@@ -1,0 +1,43 @@
+{
+  "name": "@alegradev/app-alegra-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && postcss ./src/index.css -o ./dist/css/main.css",
+    "dev:style": "postcss ./src/index.css -o ./dist/css/main.css --watch",
+    "build:style": "postcss ./src/index.css -o ./dist/css/main.css",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@alegradev/smile-ui-next": "0.0.3",
+    "core-js": "^3.8.3",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3"
+  },
+  "devDependencies": {
+    "@module-federation/fmr": "0.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-typescript": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-minify": "^1.1.0",
+    "prettier": "^2.4.1",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0",
+    "tailwindcss": "^3.1.5",
+    "typescript": "~4.5.5"
+  }
+}
