@@ -35,12 +35,6 @@ module.exports = defineConfig({
           "./microfront": "./src/micro/mount",
         },
         shared: {
-          vue: {
-            singleton: true,
-          },
-          "vue-router": {
-            singleton: true,
-          },
           ...dependencies,
         },
       }),
