@@ -16,30 +16,30 @@ module.exports = defineConfig({
     devServer: {
       port: 1026,
       host: "dev.alegra.com",
-      historyApiFallback: true,
+      historyApiFallback: true
     },
     optimization: {
-      splitChunks: false,
+      splitChunks: false
     },
     plugins: [
       new MFLiveReloadPlugin({
         port: 1026, // the port your app runs on
         container: "app_alegra_template", // the name of your app, must be unique
-        standalone: false, // false uses chrome extention
+        standalone: false // false uses chrome extention
       }),
       new ModuleFederationPlugin({
         name: "app_alegra_template",
         filename: "remoteEntry.js",
         remotes: {
-          app_alegra_commons: `app_alegra_commons@https://${prefixEnvironment}alegra-commons.alegra.com/remoteEntry.js`,
+          app_alegra_commons: `app_alegra_commons@https://${prefixEnvironment}alegra-commons.alegra.com/remoteEntry.js`
         },
         exposes: {
-          "./microfront": "./src/micro/mount",
+          "./microfront": "./src/micro/mount"
         },
         shared: {
-          ...dependencies,
-        },
-      }),
-    ],
-  },
+          ...dependencies
+        }
+      })
+    ]
+  }
 });

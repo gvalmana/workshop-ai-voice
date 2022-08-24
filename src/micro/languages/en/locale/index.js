@@ -25,7 +25,7 @@ const langs = {
   en_PA,
   en_PE,
   en_US,
-  en_ZA,
+  en_ZA
 };
 
 export default langs;
