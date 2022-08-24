@@ -10,7 +10,7 @@ const prefixEnvironment =
 
 module.exports = defineConfig({
   assetsDir: "template-assets",
-  publicPath: "http://dev.alegra.com:1026/",
+  publicPath: "http://localhost:1026/",
   transpileDependencies: true,
   configureWebpack: {
     devServer: {
