@@ -5,7 +5,7 @@ import "../index.css";
 
 const microSettings = {
   routes,
-  dictionary: convertDictionaryToObject(),
+  dictionary: convertDictionaryToObject()
 };
 
 export { microSettings };

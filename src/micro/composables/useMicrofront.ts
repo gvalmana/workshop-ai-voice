@@ -26,6 +26,6 @@ export default function () {
   return {
     addToDictionary,
     loadUserInfo,
-    reloadUserInfo,
+    reloadUserInfo
   };
 }

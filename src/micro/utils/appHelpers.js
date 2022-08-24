@@ -5,7 +5,7 @@
  */
 function pick(obj, keys) {
   return Object.keys(obj)
-    .filter((i) => keys.includes(i))
+    .filter(i => keys.includes(i))
     .reduce((acc, key) => {
       acc[key] = obj[key];
       return acc;
@@ -31,13 +31,14 @@ function convertDictionaryToObject(paths = []) {
     "PA",
     "PE",
     "US",
-    "ZA",
+    "ZA"
   ];
 
   return {
     // Iterate over the langs
     ...langKeys.reduce((accLang, lang) => {
-      let langCommon = require(`../languages/${lang}/common.js`).default;
+      let langCommon =
+        require(`../languages/${lang}/common.js`).default;
       if (paths && paths.length) {
         langCommon = pick(langCommon, paths);
       }
@@ -62,17 +63,17 @@ function convertDictionaryToObject(paths = []) {
                 // adds the previous obeject
                 ...accVer,
                 // create the key-value pair with the name of the file and its content
-                [`${lang}_${ver}`]: langVer,
+                [`${lang}_${ver}`]: langVer
               };
-            }, {}),
-          },
-        },
+            }, {})
+          }
+        }
       };
-    }, {}),
+    }, {})
   };
 }
 
 export {
   // methods
-  convertDictionaryToObject,
+  convertDictionaryToObject
 };
