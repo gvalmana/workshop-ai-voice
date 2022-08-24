@@ -5,6 +5,9 @@ const ModuleFederationPlugin =
 
 const { MFLiveReloadPlugin } = require("@module-federation/fmr");
 
+const prefixEnvironment =
+  process.env.VUE_APP_ENVIROMENT == "production" ? "" : "almost-";
+
 module.exports = defineConfig({
   assetsDir: "template-assets",
   publicPath: "http://dev.alegra.com:1026/",
@@ -28,8 +31,7 @@ module.exports = defineConfig({
         name: "app_alegra_template",
         filename: "remoteEntry.js",
         remotes: {
-          app_alegra_commons:
-            "app_alegra_commons@http://dev.alegra.com:8081/remoteEntry.js",
+          app_alegra_commons: `app_alegra_commons@https://${prefixEnvironment}alegra-commons.alegra.com/remoteEntry.js`,
         },
         exposes: {
           "./microfront": "./src/micro/mount",
