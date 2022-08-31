@@ -31,5 +31,11 @@ module.exports = {
     'vue/script-setup-uses-vars': 'error',
     //Eliminar si se desea que typescript sea mas estricto
     '@typescript-eslint/no-inferrable-types': 'off',
+
+    // vue rules
+    'vue/valid-v-slot': 'warn',
+    'vue/no-mutating-props': 'warn',
+
+    'no-var': 'error',
   },
 }
