@@ -16,7 +16,7 @@
 
       <router-link to="/configuration/about">
         <sm-button type="primary">
-          {{ $transF("submit") }}
+          {{ $transF('submit') }}
         </sm-button>
       </router-link>
     </div>
@@ -24,15 +24,15 @@
 </template>
 
 <script setup lang="ts">
-import { SmCard, SmInput, SmButton } from "@alegradev/smile-ui-next";
-import { useSessionStore } from "app_alegra_commons/session";
-import HelloWorld from "../components/HelloWorld.vue";
-import { $transF } from "app_alegra_commons/translate";
-import { computed } from "vue";
+import { SmCard, SmInput, SmButton } from '@alegradev/smile-ui-next'
+import { useSessionStore } from 'app_alegra_commons/session'
+import HelloWorld from '../components/HelloWorld.vue'
+import { $transF } from 'app_alegra_commons/translate'
+import { computed } from 'vue'
 
-const SESSION = useSessionStore();
+const SESSION = useSessionStore()
 
-const companyName = computed(() => SESSION.company.name);
+const companyName = computed(() => SESSION.company.name)
 </script>
 
 <style lang="scss" scoped>

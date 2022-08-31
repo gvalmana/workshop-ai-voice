@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { SmButton } from "@alegradev/smile-ui-next";
+import { SmButton } from '@alegradev/smile-ui-next'
 </script>
 
 <style scoped></style>

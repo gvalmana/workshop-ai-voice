@@ -10,25 +10,25 @@
 </template>
 
 <script lang="ts" setup>
-import { SmProgressCircle } from "@alegradev/smile-ui-next";
-import { useAppStore } from "app_alegra_commons/app";
-import { computed, onMounted } from "vue";
+import { SmProgressCircle } from '@alegradev/smile-ui-next'
+import { useAppStore } from 'app_alegra_commons/app'
+import { computed, onMounted } from 'vue'
 
-import { convertDictionaryToObject } from "../utils/appHelpers";
-import useMicrofront from "../composables/useMicrofront";
+import { convertDictionaryToObject } from '../utils/appHelpers'
+import useMicrofront from '../composables/useMicrofront'
 
-const { loadUserInfo, addToDictionary } = useMicrofront();
+const { loadUserInfo, addToDictionary } = useMicrofront()
 
 onMounted(async () => {
-  await loadUserInfo();
-  addToDictionary(convertDictionaryToObject());
-});
+  await loadUserInfo()
+  addToDictionary(convertDictionaryToObject())
+})
 
-const APP = useAppStore();
+const APP = useAppStore()
 
 const loading = computed(() => {
-  return Boolean(APP.globalLoading);
-});
+  return Boolean(APP.globalLoading)
+})
 </script>
 
 <style lang="scss">

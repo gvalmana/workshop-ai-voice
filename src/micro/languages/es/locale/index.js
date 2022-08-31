@@ -1,16 +1,16 @@
-import es_AR from "./es_AR";
-import es_CL from "./es_CL";
-import es_CO from "./es_CO";
-import es_CR from "./es_CR";
-import es_DO from "./es_DO";
-import es_ES from "./es_ES";
-import es_KE from "./es_KE";
-import es_MX from "./es_MX";
-import es_NG from "./es_NG";
-import es_PA from "./es_PA";
-import es_PE from "./es_PE";
-import es_US from "./es_US";
-import es_ZA from "./es_ZA";
+import es_AR from './es_AR'
+import es_CL from './es_CL'
+import es_CO from './es_CO'
+import es_CR from './es_CR'
+import es_DO from './es_DO'
+import es_ES from './es_ES'
+import es_KE from './es_KE'
+import es_MX from './es_MX'
+import es_NG from './es_NG'
+import es_PA from './es_PA'
+import es_PE from './es_PE'
+import es_US from './es_US'
+import es_ZA from './es_ZA'
 
 const langs = {
   es_AR,
@@ -25,7 +25,7 @@ const langs = {
   es_PA,
   es_PE,
   es_US,
-  es_ZA
-};
+  es_ZA,
+}
 
-export default langs;
+export default langs

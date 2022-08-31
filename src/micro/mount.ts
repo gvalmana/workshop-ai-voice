@@ -1,11 +1,11 @@
-import routes from "./router/index";
-import { convertDictionaryToObject } from "./utils/appHelpers";
-import "../../node_modules/@alegradev/smile-ui-next/dist/style.css";
-import "../index.css";
+import routes from './router/index'
+import { convertDictionaryToObject } from './utils/appHelpers'
+import '../../node_modules/@alegradev/smile-ui-next/dist/style.css'
+import '../index.css'
 
 const microSettings = {
   routes,
-  dictionary: convertDictionaryToObject()
-};
+  dictionary: convertDictionaryToObject(),
+}
 
-export { microSettings };
+export { microSettings }
