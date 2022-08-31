@@ -34,7 +34,6 @@ module.exports = {
 
     // vue rules
     'vue/valid-v-slot': 'warn',
-    'vue/no-mutating-props': 'warn',
 
     'no-var': 'error',
   },
