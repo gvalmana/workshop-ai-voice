@@ -24,6 +24,8 @@ module.exports = {
         arrowParens: 'avoid',
         printWidth: 100,
         tabWidth: 2,
+        // Eliminar si se quiere usar un específico Final de Línea
+        endOfLine: 'auto',
       },
     ],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
