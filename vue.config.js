@@ -3,7 +3,7 @@ const dependencies = require('./package.json').dependencies
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
 
 const { MFLiveReloadPlugin } = require('@module-federation/fmr')
-
+const publicPath = process.env.VUE_APP_DOMAIN
 const prefixEnvironment = process.env.VUE_APP_ENVIROMENT == 'production' ? '' : 'almost-'
 
 const plugins = [
@@ -27,14 +27,14 @@ if (process.env.VUE_APP_ENVIROMENT == 'local') {
     new MFLiveReloadPlugin({
       port: 1026, // the port your app runs on
       container: 'app_alegra_template', // the name of your app, must be unique
-      standalone: false, // false uses chrome extention
+      standalone: false,
     })
   )
 }
 
 module.exports = defineConfig({
   assetsDir: 'template-assets',
-  publicPath: 'http://dev.alegra.com:1026/',
+  publicPath: publicPath ? publicPath : 'auto',
   transpileDependencies: true,
   configureWebpack: {
     devServer: {
