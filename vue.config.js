@@ -5,10 +5,11 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 const { MFLiveReloadPlugin } = require('@module-federation/fmr')
 const publicPath = process.env.VUE_APP_DOMAIN
 const prefixEnvironment = process.env.VUE_APP_ENVIROMENT == 'production' ? '' : 'almost-'
+const proyect_name = 'app_alegra_template'
 
 const plugins = [
   new ModuleFederationPlugin({
-    name: 'app_alegra_template',
+    name: proyect_name,
     filename: 'remoteEntry.js',
     remotes: {
       app_alegra_commons: `app_alegra_commons@https://${prefixEnvironment}alegra-commons.alegra.com/remoteEntry.js`,
@@ -26,7 +27,7 @@ if (process.env.VUE_APP_ENVIROMENT == 'local') {
   plugins.push(
     new MFLiveReloadPlugin({
       port: 1026, // the port your app runs on
-      container: 'app_alegra_template', // the name of your app, must be unique
+      container: proyect_name, // the name of your app, must be unique
       standalone: false,
     })
   )
