@@ -17,11 +17,10 @@ import { computed, onMounted } from 'vue'
 import { convertDictionaryToObject } from '../utils/appHelpers'
 import useMicrofront from '../composables/useMicrofront'
 
-const { loadUserInfo, addToDictionary } = useMicrofront()
+const { loadUserInfo } = useMicrofront()
 
 onMounted(async () => {
-  await loadUserInfo()
-  addToDictionary(convertDictionaryToObject())
+  await loadUserInfo(convertDictionaryToObject())
 })
 
 const APP = useAppStore()
