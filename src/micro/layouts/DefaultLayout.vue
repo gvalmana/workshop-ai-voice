@@ -1,10 +1,17 @@
 <template>
-  <div class="layout-container">
-    <div class="sm-content-area">
-      <div v-if="loading" class="sm-content-loading">
-        <sm-progress-circle></sm-progress-circle>
+  <div class="flex bg-sm-greyblue1 max-h-screen">
+    <div class="tp-sidebar bg-sm-brand1"></div>
+    <div class="flex flex-col w-full bg-slate-100">
+      <div class="h-[56px] max-h-[56px] w-full bg-white drop-shadow"></div>
+      <div class="flex w-full overflow-auto px-5 py-8 grow relative justify-center">
+        <div v-if="loading" class="tp-content-loading">
+          <sm-progress-circle></sm-progress-circle>
+        </div>
+
+        <div v-else class="tp-content-micro">
+          <slot></slot>
+        </div>
       </div>
-      <slot v-else></slot>
     </div>
   </div>
 </template>
@@ -35,18 +42,25 @@ body {
   padding: 0px;
   margin: 0px;
 }
-.layout-container {
-  @apply flex bg-sm-greyblue1;
-  @apply min-h-screen;
-}
-.sm-content-area {
-  @apply w-full;
-  @apply overflow-auto;
-  @apply p-5;
-  @apply grow;
+.tp-sidebar {
   @apply relative;
+  @apply basis-0;
+  @apply grow-0;
+  @apply h-screen;
+  @apply shrink-0;
+  @apply overflow-x-auto;
+
+  @media screen and (min-width: 1180px) {
+    @apply basis-[220px];
+  }
 }
-.sm-content-loading {
+.tp-content-micro {
+  @apply w-full;
+  @media screen and (min-width: 1180px) {
+    @apply max-w-[1024px];
+  }
+}
+.tp-content-loading {
   height: 80vh;
   display: flex;
   justify-content: center;
