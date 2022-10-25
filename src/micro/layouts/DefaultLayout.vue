@@ -12,6 +12,7 @@
           <slot></slot>
         </div>
       </div>
+      <AppFloatingButton></AppFloatingButton>
     </div>
   </div>
 </template>
@@ -20,6 +21,7 @@
 import { SmProgressCircle } from '@alegradev/smile-ui-next'
 import { useAppStore } from 'app_alegra_commons/app'
 import { computed, onMounted } from 'vue'
+import AppFloatingButton from 'app_alegra_commons/appFloatingButton'
 
 import { convertDictionaryToObject } from '../utils/appHelpers'
 import useMicrofront from '../composables/useMicrofront'
