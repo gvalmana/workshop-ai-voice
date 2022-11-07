@@ -7,8 +7,7 @@ export default function () {
   const APP = useAppStore()
 
   const loadUserInfo = async (dictionary: object): Promise<void> => {
-    const d = getDictonaryFromObject(dictionary, APP.userLenguage, APP.appVersion)
-    await SESSION.getUser(d)
+    await SESSION.getUser(dictionary)
   }
 
   const reloadUserInfo = async (): Promise<void> => {
