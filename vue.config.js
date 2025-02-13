@@ -3,6 +3,8 @@ const dependencies = require('./package.json').dependencies
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin')
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin
 const webpack = require('webpack')
+const fs = require('fs')
+const path = require('path')
 
 const publicPath = process.env.VUE_APP_DOMAIN
 const { proyect_name, proyect_port, prefixEnvironment } = require('./config')
@@ -40,16 +42,25 @@ const plugins = [
   }),
 ]
 
+const devServer = {
+  port: proyect_port,
+  host: 'dev.alegra.com',
+  historyApiFallback: true,
+}
+
+if (process.env.VUE_APP_ENVIROMENT === 'local') {
+  devServer.https = {
+    key: fs.readFileSync(path.resolve('./.cert/key.pem')),
+    cert: fs.readFileSync(path.resolve('./.cert/cert.pem')),
+  }
+}
+
 module.exports = defineConfig({
   assetsDir: 'template-assets',
   publicPath: publicPath ? publicPath : 'auto',
   transpileDependencies: true,
   configureWebpack: {
-    devServer: {
-      port: proyect_port,
-      host: 'dev.alegra.com',
-      historyApiFallback: true,
-    },
+    devServer,
     optimization: {
       splitChunks: false,
     },
