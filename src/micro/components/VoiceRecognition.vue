@@ -75,7 +75,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { SButton, SmIcon } from '@alegradev/smile-ui-next'
-import { MicrophoneIcon, SparklesIcon } from '@heroicons/vue/24/solid'
 import { speechRecognition } from '../services/SpeechRecognitionService'
 import { apiService } from '../api/ApiService'
 import { audioService } from '../services/AudioService'

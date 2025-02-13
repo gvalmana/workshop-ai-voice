@@ -6,7 +6,7 @@
         src="https://cdn1.alegra.com/websites/alegra-new-brand-icon-accounting-minus-padding.svg"
         class="w-24 h-24"
       />
-      <h1 class="text-2xl font-bold mb-6 mt-6">{{ $transF('assistant_title') }}</h1>
+      <h1 class="text-2xl font-bold mt-6 text-[#0F172A]">{{ $transF('assistant_title') }}</h1>
 
       <VoiceRecognition />
     </div>
