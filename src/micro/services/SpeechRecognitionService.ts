@@ -16,28 +16,61 @@ export interface SpeechRecognitionConfig {
 
 class SpeechRecognitionService {
   private recognition: WebkitSpeechRecognition | null = null
+  private keywordRecognition: WebkitSpeechRecognition | null = null
   private isSupported: boolean = false
   private config: SpeechRecognitionConfig = {}
+  private isRecognitionActive: boolean = false
 
   constructor() {
     if ('webkitSpeechRecognition' in window) {
       this.recognition = new (window as any).webkitSpeechRecognition()
+      this.keywordRecognition = new (window as any).webkitSpeechRecognition()
       this.isSupported = true
+      this.setupKeywordRecognition()
       console.log('Speech Recognition is supported')
     } else {
       console.warn('Speech Recognition is not supported')
     }
   }
 
-  public async initialize(config: SpeechRecognitionConfig): Promise<boolean> {
-    if (!this.isSupported) {
-      return false
+  private setupKeywordRecognition(): void {
+    if (!this.keywordRecognition) return
+
+    this.keywordRecognition.continuous = true
+    this.keywordRecognition.interimResults = true
+    this.keywordRecognition.lang = 'es-ES'
+
+    this.keywordRecognition.onresult = (event: SpeechRecognitionEvent) => {
+      const result = Array.from(event.results)
+        .map(result => result[0])
+        .map(result => result.transcript.toLowerCase())
+        .join('')
+
+      if (result.includes('alegra') && !this.isRecognitionActive) {
+        console.log('¡Palabra clave detectada!')
+        this.keywordRecognition?.stop()
+        this.start()
+      }
     }
 
-    try {
-      // Verificar permisos del micrófono
-      await navigator.mediaDevices.getUserMedia({ audio: true })
+    this.keywordRecognition.onend = () => {
+      // Reiniciamos la escucha de palabra clave solo si no está activo el reconocimiento principal
+      if (!this.isRecognitionActive) {
+        setTimeout(() => {
+          if (this.isSupported) {
+            this.keywordRecognition?.start()
+          }
+        }, 100)
+      }
+    }
 
+    this.keywordRecognition.start()
+  }
+
+  public async initialize(config: SpeechRecognitionConfig): Promise<boolean> {
+    if (!this.isSupported) return false
+
+    try {
       this.config = config
       this.setupRecognition()
       return true
@@ -50,22 +83,31 @@ class SpeechRecognitionService {
   private setupRecognition(): void {
     if (!this.recognition) return
 
-    this.recognition.continuous = this.config.continuous ?? true
-    this.recognition.interimResults = this.config.interimResults ?? true
+    this.recognition.continuous = false
+    this.recognition.interimResults = true
     this.recognition.lang = this.config.language ?? 'es-ES'
 
     this.recognition.onstart = () => {
-      console.log('Speech Recognition started')
+      console.log('Recognition started')
+      this.isRecognitionActive = true
       this.config.onStart?.()
     }
 
     this.recognition.onend = () => {
-      console.log('Speech Recognition ended')
+      console.log('Recognition ended')
+      this.isRecognitionActive = false
       this.config.onEnd?.()
+      // Reanudamos la escucha de palabra clave
+      setTimeout(() => {
+        if (this.isSupported && !this.isRecognitionActive) {
+          this.keywordRecognition?.start()
+        }
+      }, 100)
     }
 
     this.recognition.onerror = (event: SpeechRecognitionError) => {
-      console.error('Speech Recognition error:', event.error)
+      console.error('Recognition error:', event.error)
+      this.isRecognitionActive = false
       this.config.onError?.(event.error)
     }
 
@@ -75,13 +117,12 @@ class SpeechRecognitionService {
         .map(result => result.transcript)
         .join('')
 
-      console.log('Speech Recognition result:', result)
       this.config.onResult?.(result)
     }
   }
 
   public start(): void {
-    if (this.recognition) {
+    if (this.recognition && !this.isRecognitionActive) {
       try {
         this.recognition.start()
       } catch (err) {
@@ -92,7 +133,7 @@ class SpeechRecognitionService {
   }
 
   public stop(): void {
-    if (this.recognition) {
+    if (this.recognition && this.isRecognitionActive) {
       try {
         this.recognition.stop()
       } catch (err) {

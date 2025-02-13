@@ -24,3 +24,16 @@ export interface WebkitSpeechRecognition {
   start: () => void
   stop: () => void
 }
+
+export interface ApiResponse {
+  response:
+    | {
+        url: string
+        redirect: boolean
+        audio: string
+        message?: string
+        emoji?: string
+      }
+    | string
+  error?: string
+}
