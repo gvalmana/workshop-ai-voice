@@ -5,24 +5,10 @@ class ApiService {
 
   private isReportRelated(transcript: string): boolean {
     const reportKeywords = [
+      // TODO: Agregar más palabras clave relevantes
       'reporte',
-      'reportes',
-      'resumen',
-      'resúmenes',
       'informe',
-      'informes',
-      'balance',
-      'balances',
-      'estadística',
-      'estadísticas',
-      'muéstrame',
-      'muestrame',
-      'mostrar',
-      'mostrame',
-      'ver',
-      'visualizar',
-      'enseñame',
-      'enséñame',
+      // Agregar al menos 5 palabras más
     ]
 
     const lowercaseTranscript = transcript.toLowerCase()
