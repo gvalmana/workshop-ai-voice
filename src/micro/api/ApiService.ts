@@ -5,12 +5,40 @@ class ApiService {
 
   private isReportRelated(transcript: string): boolean {
     const reportKeywords = [
-      // TODO: Agregar más palabras clave relevantes
+      // Reportes y documentos
       'reporte',
+      'reportes',
       'informe',
-      // Agregar al menos 5 palabras más
+      'informes',
+      'balance',
+      'balances',
+      'estadística',
+      'estadísticas',
+      // Verbos de visualización
+      'muéstrame',
+      'muestrame',
+      'mostrar',
+      'mostrame',
+      'ver',
+      'visualizar',
+      'enseñame',
+      'enséñame',
+      // Consultas específicas
+      'ventas',
+      'ingresos',
+      'gastos',
+      'ganancias',
+      'pérdidas',
+      'inventario',
+      // Períodos
+      'mensual',
+      'anual',
+      'trimestral',
+      'semestral',
+      // Frases comunes
+      'dame un resumen',
+      'necesito saber',
     ]
-
     const lowercaseTranscript = transcript.toLowerCase()
     return reportKeywords.some(keyword => lowercaseTranscript.includes(keyword))
   }

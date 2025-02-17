@@ -35,20 +35,32 @@ class SpeechRecognitionService {
 
   private setupKeywordRecognition(): void {
     if (!this.keywordRecognition) return
-
+  
     this.keywordRecognition.continuous = true
     this.keywordRecognition.interimResults = true
     this.keywordRecognition.lang = 'es-ES'
-
+  
     this.keywordRecognition.onresult = (event: SpeechRecognitionEvent) => {
-      // TODO: Implementar la detección de la palabra "Alegra"
       // 1. Obtener el texto del resultado
+      const result = Array.from(event.results)
+        .map(result => result[0])
+        .map(result => result.transcript.toLowerCase())
+        .join('')
+  
       // 2. Verificar si contiene la palabra clave
-      // 3. Iniciar el reconocimiento principal si se detecta
+      if (result.includes('alegra') && !this.isRecognitionActive) {
+        console.log('¡Palabra clave detectada!')
+  
+        // 3. Detener la escucha de palabra clave temporalmente
+        this.keywordRecognition?.stop()
+  
+        // 4. Iniciar el reconocimiento principal
+        this.start()
+      }
     }
-
+  
+    // Reiniciar la escucha de palabra clave cuando termine
     this.keywordRecognition.onend = () => {
-      // Reiniciamos la escucha de palabra clave solo si no está activo el reconocimiento principal
       if (!this.isRecognitionActive) {
         setTimeout(() => {
           if (this.isSupported) {
@@ -57,9 +69,11 @@ class SpeechRecognitionService {
         }, 100)
       }
     }
-
+  
+    // Iniciar la escucha de palabra clave
     this.keywordRecognition.start()
   }
+  
 
   public async initialize(config: SpeechRecognitionConfig): Promise<boolean> {
     if (!this.isSupported) return false
